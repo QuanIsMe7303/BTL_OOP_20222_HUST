@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package controller;
 
 import java.awt.BorderLayout;
@@ -10,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import view.TabbedPaneMenu;
+import view.GUI_2_TabbedPaneMenu;
 
 /**
  *
@@ -35,7 +32,7 @@ public class ShowMainMenu {
 
     class ChangePanel implements ActionListener {
 
-        private TabbedPaneMenu node;
+        private GUI_2_TabbedPaneMenu node;
         private JMenuItem menuItem;
 
         public ChangePanel(JMenuItem jMenuItem) {
@@ -47,27 +44,27 @@ public class ShowMainMenu {
             String src = menuItem.getLabel();
             switch (src) {
                 case "Questions":
-                    node = new TabbedPaneMenu();
+                    node = new GUI_2_TabbedPaneMenu();
                     node.getTabbedPaneMenu().setSelectedIndex(0);
                     break;
                 case "Catagories":
-                    node = new TabbedPaneMenu();
+                    node = new GUI_2_TabbedPaneMenu();
                     node.getTabbedPaneMenu().setSelectedIndex(1);
                     break;
                 case "Import":
-                    node = new TabbedPaneMenu();
+                    node = new GUI_2_TabbedPaneMenu();
                     node.getTabbedPaneMenu().setSelectedIndex(2);
                     break;
                 case "Export":
-                    node = new TabbedPaneMenu();
+                    node = new GUI_2_TabbedPaneMenu();
                     node.getTabbedPaneMenu().setSelectedIndex(3);
                     break;
                 default:
-                    node = new TabbedPaneMenu();
+                    node = new GUI_2_TabbedPaneMenu();
                     node.getTabbedPaneMenu().setSelectedIndex(0);
                     break;
             }
-            node.setSize(1035, 446);
+            node.setSize(1035, 521);
             node.setLocation(0, 0);
             root.removeAll();
             root.add(node, BorderLayout.CENTER);

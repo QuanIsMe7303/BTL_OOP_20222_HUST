@@ -16,15 +16,15 @@ import javax.swing.JPopupMenu;
  *
  * @author anhqu
  */
-public class MainFrame extends javax.swing.JFrame {
+public class GUI1_1_MainFrame extends javax.swing.JFrame {
 
 
     /**
      * Creates new form MainFrame
      */
-    public MainFrame() {
+    public GUI1_1_MainFrame() {
         initComponents();
-        showMenuPopUp();
+        showMainMenu();
     }
 
     @SuppressWarnings("unchecked")
@@ -41,28 +41,34 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         lbl_settingToShowPopUpMenu = new javax.swing.JLabel();
         btn_turnOnEditting = new javax.swing.JButton();
+        lbl_HomeLogo = new javax.swing.JLabel();
         panel_content = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        panel_examList = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         question_MenuItem.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         question_MenuItem.setForeground(new java.awt.Color(0, 159, 229));
         question_MenuItem.setText("Questions");
+        question_MenuItem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PopUpMenu.add(question_MenuItem);
 
         catagories_MenuItem.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         catagories_MenuItem.setForeground(new java.awt.Color(0, 159, 229));
         catagories_MenuItem.setText("Catagories");
+        catagories_MenuItem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PopUpMenu.add(catagories_MenuItem);
 
         import_MenuItem.setFont(new java.awt.Font("Roboto Slab Medium", 0, 18)); // NOI18N
         import_MenuItem.setForeground(new java.awt.Color(0, 159, 229));
         import_MenuItem.setText("Import");
+        import_MenuItem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PopUpMenu.add(import_MenuItem);
 
         export_MenuItem.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         export_MenuItem.setForeground(new java.awt.Color(0, 159, 229));
         export_MenuItem.setText("Export");
+        export_MenuItem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PopUpMenu.add(export_MenuItem);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,7 +89,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lbl_settingToShowPopUpMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Local_Image/setting_24.png"))); // NOI18N
+        lbl_settingToShowPopUpMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/img/setting_24.png"))); // NOI18N
         lbl_settingToShowPopUpMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbl_settingToShowPopUpMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -96,53 +102,89 @@ public class MainFrame extends javax.swing.JFrame {
         btn_turnOnEditting.setForeground(new java.awt.Color(255, 255, 255));
         btn_turnOnEditting.setText("TURN EDITING ON");
         btn_turnOnEditting.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_turnOnEditting.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addNewQuiz(evt);
+            }
+        });
+
+        lbl_HomeLogo.setFont(new java.awt.Font("Roboto Slab", 0, 36)); // NOI18N
+        lbl_HomeLogo.setForeground(new java.awt.Color(194, 41, 36));
+        lbl_HomeLogo.setText("IT");
+        lbl_HomeLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_HomeLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                returnHomeFrame(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(852, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbl_settingToShowPopUpMenu)
-                    .addComponent(btn_turnOnEditting))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap(852, Short.MAX_VALUE)
+                        .addComponent(btn_turnOnEditting))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(lbl_HomeLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_settingToShowPopUpMenu)))
                 .addGap(38, 38, 38))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(lbl_settingToShowPopUpMenu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(lbl_settingToShowPopUpMenu))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbl_HomeLogo)))
+                .addGap(18, 18, 18)
                 .addComponent(btn_turnOnEditting, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         panel_content.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jLabel2.setText("Bài 1");
+
         jLabel1.setText("Bài 2");
 
-        jLabel2.setText("Bài 1");
+        javax.swing.GroupLayout panel_examListLayout = new javax.swing.GroupLayout(panel_examList);
+        panel_examList.setLayout(panel_examListLayout);
+        panel_examListLayout.setHorizontalGroup(
+            panel_examListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_examListLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panel_examListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panel_examListLayout.setVerticalGroup(
+            panel_examListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_examListLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(433, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout panel_contentLayout = new javax.swing.GroupLayout(panel_content);
         panel_content.setLayout(panel_contentLayout);
         panel_contentLayout.setHorizontalGroup(
             panel_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_contentLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(panel_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panel_examList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panel_contentLayout.setVerticalGroup(
             panel_contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_contentLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(354, Short.MAX_VALUE))
+            .addComponent(panel_examList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panel_ContainsAllLayout = new javax.swing.GroupLayout(panel_ContainsAll);
@@ -184,19 +226,14 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Hiển thị PopUpMenu GUI_1.2 khi ấn vào nút cài đặt
     private void showPopupMenu(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showPopupMenu
-        // TODO add your handling code here:
         PopUpMenu = new JPopupMenu();
-        PopUpMenu.setLayout(new GridLayout(4, 2, 20, 0));
+        PopUpMenu.setLayout(new GridLayout(4, 2, 50, 0));
+        
         JPanel panel_menuPopUpLeft = new JPanel();
-
         JLabel popupTitle = new JLabel("Question Bank");
         popupTitle.setFont(new Font("Roboto Black", Font.BOLD, 24));
         popupTitle.setForeground(new Color(0, 159, 229));
-
         panel_menuPopUpLeft.add(popupTitle);
-
-        JPanel panel_menuPopUpRight = new JPanel();
-        panel_menuPopUpRight.setLayout(new GridLayout(4, 1));
 
         PopUpMenu.add(panel_menuPopUpLeft);
         PopUpMenu.add(question_MenuItem);
@@ -207,8 +244,27 @@ public class MainFrame extends javax.swing.JFrame {
         PopUpMenu.add(new Label(""));
         PopUpMenu.add(export_MenuItem);
 
-        PopUpMenu.show(evt.getComponent(), evt.getX() - 350, evt.getY());
+        PopUpMenu.show(evt.getComponent(), evt.getX() - 380, evt.getY());
     }//GEN-LAST:event_showPopupMenu
+
+    private void returnHomeFrame(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_returnHomeFrame
+        // TODO add your handling code here:
+        this.panel_content.removeAll();
+        this.panel_content.add(panel_examList);
+        this.validate();
+        this.repaint();
+    }//GEN-LAST:event_returnHomeFrame
+
+    private void addNewQuiz(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewQuiz
+        // TODO add your handling code here:
+        GUI_5_1_AddNewQuiz addNewQuiz = new GUI_5_1_AddNewQuiz(this);
+        this.panel_content.removeAll();
+        addNewQuiz.setSize(1030, 470);
+        addNewQuiz.setLocation(5, 2);
+        this.panel_content.add(addNewQuiz);
+        this.validate();
+        this.repaint();
+    }//GEN-LAST:event_addNewQuiz
 
     /**
      * @param args the command line arguments
@@ -223,14 +279,16 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lbl_HomeLogo;
     private javax.swing.JLabel lbl_settingToShowPopUpMenu;
     private javax.swing.JPanel panel_ContainsAll;
     private javax.swing.JPanel panel_content;
+    private javax.swing.JPanel panel_examList;
     private javax.swing.JPanel panel_header;
     private javax.swing.JMenuItem question_MenuItem;
     // End of variables declaration//GEN-END:variables
 
-    public void showMenuPopUp() {
+    public void showMainMenu() {
         ShowMainMenu showMainMenu = new ShowMainMenu(panel_content);
         List<JMenuItem> menuItems = new ArrayList<JMenuItem>();
         menuItems.add(question_MenuItem);
@@ -239,4 +297,27 @@ public class MainFrame extends javax.swing.JFrame {
         menuItems.add(export_MenuItem);
         showMainMenu.setEvent(menuItems);
     }
+
+    public JPanel getPanel_content() {
+        return panel_content;
+    }
+
+    public void setPanel_content(JPanel panel_content) {
+        this.panel_content = panel_content;
+    }
+
+    public JPanel getPanel_examList() {
+        return panel_examList;
+    }
+
+    public void setPanel_examList(JPanel panel_examList) {
+        this.panel_examList = panel_examList;
+    }
+    
+    
+    
+    
 }
+
+
+
